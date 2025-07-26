@@ -3,50 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Bingo del 1 al 90</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      text-align: center;
-      padding: 20px;
-      background-color: #fdfdfd;
-    }
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-    }
-    #currentNumber {
-      font-size: 5rem;
-      margin: 30px 0;
-      color: #222;
-    }
-    button {
-      font-size: 2rem;
-      padding: 15px 30px;
-      cursor: pointer;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      margin-bottom: 30px;
-    }
-    #numbers {
-      display: grid;
-      grid-template-columns: repeat(10, 1fr);
-      gap: 8px;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    .number {
-      padding: 10px;
-      border-radius: 6px;
-      font-size: 1.2rem;
-      background-color: #e0e0e0;
-    }
-    .drawn {
-      background-color: #ff4c4c;
-      color: white;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
@@ -56,38 +13,6 @@
 
   <div id="numbers"></div>
 
-  <script>
-    const totalNumbers = 90;
-    let available = Array.from({ length: totalNumbers }, (_, i) => i + 1);
-    const drawn = [];
-
-    const currentNumberEl = document.getElementById("currentNumber");
-    const numbersEl = document.getElementById("numbers");
-
-    // Mostrar todos los números inicialmente
-    for (let i = 1; i <= totalNumbers; i++) {
-      const div = document.createElement("div");
-      div.textContent = i;
-      div.classList.add("number");
-      div.id = `num-${i}`;
-      numbersEl.appendChild(div);
-    }
-
-    function drawNumber() {
-      if (available.length === 0) {
-        currentNumberEl.textContent = "🎉 Fin del juego 🎉";
-        return;
-      }
-
-      const randomIndex = Math.floor(Math.random() * available.length);
-      const number = available.splice(randomIndex, 1)[0];
-      drawn.push(number);
-
-      currentNumberEl.textContent = number;
-
-      // Resaltar el número como ya sorteado
-      document.getElementById(`num-${number}`).classList.add("drawn");
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
